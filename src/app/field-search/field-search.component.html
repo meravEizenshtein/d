@@ -1,0 +1,121 @@
+ 
+ <div>
+  <input [(ngModel)]=txtName placeholder = "name" />
+  <input [(ngModel)]=typeFilter placeholder = "type" />
+ </div> 
+  
+  <div class="panel panel-default panel-table">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col col-xs-6">
+          <h3 class="panel-title">Panel Heading</h3>
+        </div>
+        <div class="col col-xs-6 text-right">
+          <button type="button" class="btn btn-sm btn-primary btn-create" (click)="openNewItemLine()">Create New</button>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <table sortable-table (sorted)="onSorted($event)"class="table table-striped table-bordered table-list">
+        <thead>
+          <tr>
+              <th><em class="glyphicon glyphicon-cog"></em></th>
+              <th sortable-column="id" sort-direction="asc">ID</th>
+              <th sortable-column="name" >NAME</th>
+              <th>TYPE</th>
+              <th>LENGTH</th>
+              <th>BASED ON</th>
+              <th>IS DOMAIN</th>
+          </tr> 
+        </thead>
+        <tbody>
+                <tr *ngIf="isNewItemLineOpen==true">
+                  <td align="center">
+                    <a class="btn btn-default" (click)="save()"><em class="glyphicon glyphicon-save"></em></a>
+                    <a class="btn btn-danger" 
+                    (click)="delete()">
+                    <em class="glyphicon glyphicon-trash"></em></a>
+                  </td>
+                  <td></td>
+                  <td>
+                    <input type="text" [(ngModel)]="newFieldname">
+       |           </td>
+                  <td>
+                      <input type="text" [(ngModel)]="newFieldType">
+                  </td>
+                  <td>
+                    <input type="text" [(ngModel)]="newFieldLength">
+                  </td>  
+                  <td>
+                    <input type="text" [(ngModel)]="newFieldBasedOn">
+                  </td>
+                  <td>
+                    <input type="checkbox" [(ngModel)]="newFieldIsDomain">
+                  </td>
+                </tr>
+                <tr *ngFor="let field of fields | searchfilter: 'name' : txtName
+                | searchfilter: 'type' :typeFilter" >
+                  <td align="center">
+                    <a *ngIf="field.id != editRowId" class="btn btn-default" (click)="changeToEditMode(field.id)"><em class="glyphicon glyphicon-pencil"></em></a>
+                    <a *ngIf="field.id == editRowId" class="btn btn-default"
+                     (click)="update(field)"><em class="glyphicon glyphicon-save"></em></a>
+                    <a class="btn btn-danger" (click)="deleteRow(field)"><em class="glyphicon glyphicon-trash"></em></a>
+                    <a class= "btn btn-default" (click)="showDetail(field)"><em class="glyphicon glyphicon-backward"></em></a> 
+                  </td>
+                  <td>{{field.id}}</td>
+                  <td *ngIf="field.id == editRowId">
+                    <input type="text" [(ngModel)]="field.name">
+                  </td>
+                  <td *ngIf="field.id != editRowId">
+                    {{field.name}}</td>
+                  <td *ngIf="field.id == editRowId">
+                      <input type="text" [(ngModel)]="field.type">
+                  </td>
+                  <td *ngIf="field.id != editRowId" >
+                    {{field.type}}</td>
+
+                  <td *ngIf="field.id == editRowId">
+                    <input type="text" [(ngModel)]="field.length">
+                  </td>
+                  <td *ngIf="field.id != editRowId">
+                    {{field.length}}
+                  </td>  
+                  <td *ngIf="field.id == editRowId">
+                    <input type="text" [(ngModel)]="field.basedOn">
+                  </td>
+                  <td *ngIf="field.id != editRowId">
+                    {{field.basedOn}}
+                  </td>
+                  <td *ngIf="field.id == editRowId">
+                    <input type="checkbox" [(ngModel)]="field.isDomain">
+                  </td>
+                  <td *ngIf="field.id != editRowId">
+                      <input type="checkbox" [(ngModel)]="field.isDomain" onclick="return false;">
+                  </td>
+                </tr>
+              </tbody>
+      </table>
+  
+    </div>
+    <!--
+    <div class="panel-footer">
+      <div class="row">
+        <div class="col col-xs-4">Page 1 of 5
+        </div>
+        <div class="col col-xs-8">
+          <ul class="pagination hidden-xs pull-right">
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+          </ul>
+          <ul class="pagination visible-xs pull-right">
+              <li><a href="#">«</a></li>
+              <li><a href="#">»</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+-->

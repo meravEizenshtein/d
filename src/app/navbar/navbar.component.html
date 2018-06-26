@@ -1,0 +1,8 @@
+
+<div id="mySidenav" class="sidenav" [style.width.px]="navbarWidth">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+    <a href="#" [routerLink]="['/fieldSearch']">Search fields</a>
+    <a href="#" [routerLink]= "['/entities']">entities</a>
+    <a href="#">Contact</a>
+  </div>
+  <span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776; open</span>

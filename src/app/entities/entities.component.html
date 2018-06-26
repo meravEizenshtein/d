@@ -1,0 +1,12 @@
+<table>
+  <thead>
+      <th sortable-column="id" sort-direction="asc">id</th>
+      <th sortable-column="name">name</th>    
+  </thead>
+  <tbody>
+    <tr *ngFor="let entity of entities">
+      <td>{{entity.id}}</td>
+      <td>{{entity.name}}</td>
+    </tr>
+  </tbody>
+  
