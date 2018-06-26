@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # CalDevStudio
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.3.
@@ -25,3 +26,8 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+=======
+# d
+Dev-Dictionary
+angular dev dictionary project
+>>>>>>> d6cc34ec64956f3a05d5dc81314be040cdca6288
